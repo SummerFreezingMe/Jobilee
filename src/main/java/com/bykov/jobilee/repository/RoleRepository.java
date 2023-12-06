@@ -1,0 +1,10 @@
+package com.bykov.jobilee.repository;
+
+import com.bykov.jobilee.domain.model.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+    Optional<Role> findByName(String name);
+}

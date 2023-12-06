@@ -2,6 +2,9 @@ package com.bykov.jobilee.domain.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -35,11 +38,6 @@ public class User implements Serializable {
     @NonNull
     private String name;
 
-    @Column(name = "mail")
-    @NonNull
-    //todo: regex
-    private String mail;
-
 
     @Column(name = "rating")
     @NonNull
@@ -58,6 +56,24 @@ public class User implements Serializable {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "email")
+    @Email
+    @Size(min = 5, max = 254)
+    private String email;
+
+    @Column(name = "phone_number")
+    @NotBlank
+    @Size(min = 1, max = 20)
+    private String phoneNumber;
+
+    @Column(name = "username")
+    @NotBlank
+    private String username;
+
+    @Column(name = "password")
+    @NotBlank
+    @Size(min = 60, max = 60)
+    private String password;
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     private Role role;
